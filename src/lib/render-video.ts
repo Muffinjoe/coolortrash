@@ -185,8 +185,8 @@ function drawProduct(
 
   const img = imageMap.get(q.imageUrl);
   if (img) {
-    const maxImgW = 360;
-    const maxImgH = 360;
+    const maxImgW = 500;
+    const maxImgH = 500;
     const scale = Math.min(maxImgW / img.width, maxImgH / img.height);
     const imgW = img.width * scale;
     const imgH = img.height * scale;
@@ -205,10 +205,12 @@ function drawProduct(
   }
 
   // Title
-  ctx.fillStyle = "#0a0a0a";
-  ctx.font = `800 42px -apple-system, BlinkMacSystemFont, sans-serif`;
-  ctx.textAlign = "center";
-  ctx.fillText(q.title, W / 2, 560);
+  if (q.title) {
+    ctx.fillStyle = "#0a0a0a";
+    ctx.font = `800 42px -apple-system, BlinkMacSystemFont, sans-serif`;
+    ctx.textAlign = "center";
+    ctx.fillText(q.title, W / 2, 700);
+  }
   ctx.globalAlpha = 1;
 
   // User answer pill
@@ -219,7 +221,7 @@ function drawProduct(
     const pillW = 280;
     const pillH = 70;
     const pillX = W / 2 - pillW / 2;
-    const pillY = 600;
+    const pillY = q.title ? 740 : 700;
 
     ctx.fillStyle = q.isCool ? "#dbeafe" : "#fee2e2";
     roundRect(ctx, pillX, pillY, pillW, pillH, 20);
@@ -244,7 +246,7 @@ function drawProduct(
     ctx.globalAlpha = cAlpha;
 
     const barX = 80;
-    const barY = 750;
+    const barY = q.title ? 880 : 840;
     const barW = W - 160;
     const barH = 56;
     const coolWidth = Math.max(barW * (q.coolPct / 100), barW * 0.08);
