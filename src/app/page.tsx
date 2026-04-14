@@ -320,7 +320,7 @@ export default function Home() {
                           alt={c.title}
                           className="w-8 h-8 object-contain rounded shrink-0"
                         />
-                        <span className="truncate">{c.title}</span>
+                        {c.title && <span className="truncate">{c.title}</span>}
                       </div>
                       <span className="shrink-0 text-lg ml-2">
                         {c.isCool ? c.coolEmoji : c.trashEmoji}
@@ -522,9 +522,12 @@ export default function Home() {
             </a>
 
             {/* Product Title */}
-            <p className="text-2xl font-black leading-tight mb-8">
-              {product.title}
-            </p>
+            {product.title && (
+              <p className="text-2xl font-black leading-tight mb-8">
+                {product.title}
+              </p>
+            )}
+            {!product.title && <div className="mb-8" />}
 
             {/* Vote Buttons */}
             {(() => {
@@ -567,10 +570,10 @@ export default function Home() {
                 >
                   <img
                     src={currentProduct.image_url}
-                    alt={currentProduct.title}
+                    alt={currentProduct.title || "Product"}
                     className="w-14 h-14 object-contain rounded-xl border border-neutral-200 bg-neutral-50"
                   />
-                  <p className="text-lg font-bold">{currentProduct.title}</p>
+                  {currentProduct.title && <p className="text-lg font-bold">{currentProduct.title}</p>}
                 </a>
 
                 {/* Main percentage */}
@@ -621,7 +624,7 @@ export default function Home() {
                 </p>
 
                 {/* Buy link */}
-                <a
+                {currentProduct.title && <a
                   href={currentProduct.affiliate_url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -629,7 +632,7 @@ export default function Home() {
                   className="block text-center text-violet-600 font-semibold text-sm hover:text-violet-700 transition-colors"
                 >
                   {"Buy it \u2192"}
-                </a>
+                </a>}
               </div>
             );
           })()
