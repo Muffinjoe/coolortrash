@@ -420,6 +420,20 @@ const SEED_DATA: [string, string, string, string, number, number][] = [
   ["", "/products/HFRbZHZasAAbBXr.webp", "https://amzn.to/4cImG3j", "", 3, 2],
   ["", "/products/HFVDFL6aEAAYbMu.webp", "https://amzn.to/4cImG3j", "", 3, 2],
   ["", "/products/HFWQH6oWMAA-wBZ.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_arnie.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_cage.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_carrey.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_depp.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_dicaprio.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_dicaprio2.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_downey.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_elon.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_mcgregor.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_person1.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_person2.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_ramsay.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_rock.webp", "https://amzn.to/4cImG3j", "", 3, 2],
+  ["", "/products/face_trump.webp", "https://amzn.to/4cImG3j", "", 3, 2],
 ];
 
 export interface Product {
