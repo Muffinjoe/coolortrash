@@ -468,12 +468,29 @@ export async function initDb() {
 
 export async function getRandomBatch(excludeIds: number[], count: number): Promise<Product[]> {
   const sql = getDb();
-  if (excludeIds.length === 0) {
-    const rows = await sql`SELECT * FROM products ORDER BY RANDOM() LIMIT ${count}`;
-    return rows as unknown as Product[];
+  // 70% images (no title), 30% products (with title)
+  const imageCount = Math.round(count * 0.7);
+  const productCount = count - imageCount;
+
+  const ex = excludeIds.length > 0 ? excludeIds : [0];
+
+  const images = await sql`SELECT * FROM products WHERE id != ALL(${ex}) AND title = '' ORDER BY RANDOM() LIMIT ${imageCount}`;
+  const products = await sql`SELECT * FROM products WHERE id != ALL(${ex}) AND title != '' ORDER BY RANDOM() LIMIT ${productCount}`;
+
+  // Combine and shuffle
+  const combined = [...(images as unknown as Product[]), ...(products as unknown as Product[])];
+  for (let i = combined.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [combined[i], combined[j]] = [combined[j], combined[i]];
   }
-  const rows = await sql`SELECT * FROM products WHERE id != ALL(${excludeIds}) ORDER BY RANDOM() LIMIT ${count}`;
-  return rows as unknown as Product[];
+
+  // If either pool ran out, we still return what we got
+  if (combined.length === 0) {
+    const fallback = await sql`SELECT * FROM products WHERE id != ALL(${ex}) ORDER BY RANDOM() LIMIT ${count}`;
+    return fallback as unknown as Product[];
+  }
+
+  return combined;
 }
 
 export async function vote(id: number, isCool: boolean): Promise<Product | null> {
