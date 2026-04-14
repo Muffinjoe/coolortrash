@@ -223,6 +223,12 @@ function drawProduct(
     const pillX = W / 2 - pillW / 2;
     const pillY = q.title ? 740 : 700;
 
+    // "I said it's..." label
+    ctx.fillStyle = "#a3a3a3";
+    ctx.font = `600 24px -apple-system, BlinkMacSystemFont, sans-serif`;
+    ctx.textAlign = "center";
+    ctx.fillText("I said it's...", W / 2, pillY - 14);
+
     ctx.fillStyle = q.isCool ? "#dbeafe" : "#fee2e2";
     roundRect(ctx, pillX, pillY, pillW, pillH, 20);
     ctx.fill();
