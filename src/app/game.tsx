@@ -524,7 +524,7 @@ export default function Game({ initialProducts }: { initialProducts?: Product[] 
                 ref={imgRef}
                 src={product.image_url}
                 alt={product.title || "Product"}
-                className="w-full h-auto object-contain rounded-lg"
+                className="w-full h-auto object-contain rounded-lg max-h-[50vh]"
               />
               {product.price && (
                 <span className="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-sm font-bold text-neutral-700 border border-neutral-200">
