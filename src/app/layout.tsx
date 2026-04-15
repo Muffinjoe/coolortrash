@@ -10,6 +10,7 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: "Cool or Trash? - Rate Weird Products",
   description: "Swipe through the internet's weirdest products. Is it cool or trash? You decide.",
+  metadataBase: new URL("https://coolortrash.com"),
   icons: {
     icon: "/favicon.svg",
   },
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     title: "Cool or Trash?",
     description: "Rate the internet's weirdest products",
     siteName: "CoolOrTrash.com",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
