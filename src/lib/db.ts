@@ -524,7 +524,8 @@ export async function initDb() {
       category TEXT DEFAULT 'funny',
       cool_votes INTEGER DEFAULT 0,
       trash_votes INTEGER DEFAULT 0,
-      created_at TIMESTAMPTZ DEFAULT NOW()
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+      UNIQUE(image_url)
     )
   `;
   await sql`
@@ -544,11 +545,12 @@ export async function initDb() {
     )
   `;
 
-  const count = await sql`SELECT COUNT(*) as c FROM products`;
-  if (Number(count[0].c) === 0) {
-    for (const [title, imageUrl, affiliateUrl, price, cool, trash] of SEED_DATA) {
-      await sql`INSERT INTO products (title, image_url, affiliate_url, price, cool_votes, trash_votes) VALUES (${title}, ${imageUrl}, ${affiliateUrl}, ${price}, ${cool}, ${trash})`;
-    }
+  // Add unique constraint if missing (for existing tables)
+  await sql`CREATE UNIQUE INDEX IF NOT EXISTS products_image_url_idx ON products (image_url)`;
+
+  // Insert only new products, preserve existing votes
+  for (const [title, imageUrl, affiliateUrl, price, cool, trash] of SEED_DATA) {
+    await sql`INSERT INTO products (title, image_url, affiliate_url, price, cool_votes, trash_votes) VALUES (${title}, ${imageUrl}, ${affiliateUrl}, ${price}, ${cool}, ${trash}) ON CONFLICT DO NOTHING`;
   }
   initialized = true;
 }
