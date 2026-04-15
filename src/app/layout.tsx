@@ -34,6 +34,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
       <head>
+        <link rel="preconnect" href="https://m.media-amazon.com" />
+        <link rel="dns-prefetch" href="https://m.media-amazon.com" />
         <script defer src="https://cloud.umami.is/script.js" data-website-id="ea5c83ef-d6f9-4c65-acc4-94b7d87c5112" />
         <script
           dangerouslySetInnerHTML={{
