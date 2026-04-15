@@ -633,6 +633,16 @@ export default function Home() {
                 >
                   {"Buy it \u2192"}
                 </a>}
+
+                {/* Countdown bar */}
+                <div className="w-full h-1.5 bg-neutral-100 rounded-full mt-6 overflow-hidden">
+                  <div
+                    className="h-full bg-violet-400 rounded-full"
+                    style={{
+                      animation: "shrinkBar 2.5s linear forwards",
+                    }}
+                  />
+                </div>
               </div>
             );
           })()
