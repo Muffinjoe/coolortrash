@@ -506,13 +506,13 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={trackBuyClick}
-              className="relative w-full aspect-square max-w-[320px] mx-auto mb-6 bg-neutral-50 rounded-2xl border border-neutral-200 flex items-center justify-center overflow-hidden block"
+              className="relative w-full max-w-[320px] mx-auto mb-6 bg-neutral-50 rounded-2xl border border-neutral-200 flex items-center justify-center p-4 block"
             >
               <img
                 ref={imgRef}
                 src={product.image_url}
-                alt={product.title}
-                className="max-w-[85%] max-h-[85%] object-contain"
+                alt={product.title || "Product"}
+                className="w-full h-auto object-contain rounded-lg"
               />
               {product.price && (
                 <span className="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-sm font-bold text-neutral-700 border border-neutral-200">
