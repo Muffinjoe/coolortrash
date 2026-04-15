@@ -164,8 +164,15 @@ export default function Game({ initialProducts }: { initialProducts?: Product[] 
 
       setPhase("result");
 
+      // Preload next image while user views results
+      const nextProduct = queue[currentIndex + 1];
+      if (nextProduct) {
+        const preload = new Image();
+        preload.src = nextProduct.image_url;
+      }
+
       setTimeout(() => {
-        // First round: stop at 8 to show share card
+        // First round: stop at 5 to show share card
         if (!pastFirstRound && newChoices.length >= FIRST_ROUND_SIZE) {
           setPhase("done");
           return;
