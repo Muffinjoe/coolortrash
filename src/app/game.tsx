@@ -635,15 +635,15 @@ export default function Game({ initialProducts }: { initialProducts?: Product[] 
                     : `Only ${userPct}% agree with you \uD83D\uDC40`}
                 </p>
 
-                {/* Buy link */}
+                {/* Buy button */}
                 {currentProduct.title && <a
                   href={currentProduct.affiliate_url}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={trackBuyClick}
-                  className="block text-center text-violet-600 font-semibold text-sm hover:text-violet-700 transition-colors"
+                  className="block w-full py-3.5 rounded-2xl bg-violet-500 hover:bg-violet-400 active:scale-95 transition-all text-white font-bold text-base text-center cursor-pointer"
                 >
-                  {"Buy it \u2192"}
+                  {"Buy it on Amazon \u2192"}
                 </a>}
 
                 {/* Countdown bar */}
