@@ -643,7 +643,7 @@ export default function Game({ initialProducts }: { initialProducts?: Product[] 
                   onClick={trackBuyClick}
                   className="block w-full py-3.5 rounded-2xl bg-violet-500 hover:bg-violet-400 active:scale-95 transition-all text-white font-bold text-base text-center cursor-pointer"
                 >
-                  {"Buy it on Amazon \u2192"}
+                  {"Buy it \u2192"}
                 </a>}
 
                 {/* Countdown bar */}
